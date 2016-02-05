@@ -19,8 +19,7 @@ function commandHandler(cmd, callback){
     }
     
     if ( command == 'report' ) {
-        // commands.report()
-        callback(null,JSON.stringify(state));
+        callback(null,objToString(state));
     }
 
     kgo
@@ -66,7 +65,6 @@ function commandHandler(cmd, callback){
                     callback(null,'ok')   
                 }
             }) 
-            // done(null);
         })
         (['*place'], function(error){
             var message = '\nPlease place robo within table surface dimensions\n' +  objToString(config.tableDimensions);
@@ -76,37 +74,6 @@ function commandHandler(cmd, callback){
             
             callback(errors.invalidOptions, error) 
         })
-        
-        
-    // if ( cli in commands ){}
-    //             console.log('\nYep I know what that means');
-                
-    //             commands[cli](options, function(error,msg){
-    //                 if (error){ 
-    //                     console.log(error); 
-    //                     return; 
-    //                 }
-    //                 console.log('\nreturn message',msg);
-    //             });
-                
-    //             cli = '';  
-    //         }
-    //         else {
-    //             console.log('\nSorry I don\'t recognise the command. Please use one of the following:',commands);  
-    //             cli = '';
-    //             optionsFlag = false;
-    //         }  
-
-    //     break;
-    //     case 'backspace':
-    //         cli = cli.slice(0, -1);
-    //         process.stdout.write('\x1b\x7f');
-    //     break;
-    //     default:
-    //         cli += keystroke;
-    //         process.stdout.write(keystroke);
-    // }
-
 }
 
 function objToString (obj) {

@@ -11,8 +11,9 @@ rl.setPrompt('robo > ');
 rl.prompt();
 
 rl.on('line', function (cmd) {
-  commander(cmd.toLowerCase(), function(error,message){
+    commander(cmd.toLowerCase(), function(error,message){
         if ( error instanceof Array ){
+            //handle an array of errors
             for (var i = error.length - 1; i >= 0; i--) {
                 console.log(error[i].error.underline.red,error[i].msg);
             }
@@ -20,6 +21,7 @@ rl.on('line', function (cmd) {
             return;
         }
         else if(error){
+            //handle just one error
             console.log(error.underline.red,message);
             rl.prompt();
             return;
@@ -28,7 +30,7 @@ rl.on('line', function (cmd) {
         console.log(message.underline.green);
         rl.prompt();
         return;
-  });
+    });
 });
 
 rl.on('close', function() {

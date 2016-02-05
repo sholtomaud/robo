@@ -10,9 +10,9 @@ Create an application that can read in commands from cli
 The origin (0,0) can be considered to be the SOUTH WEST most corner
 
 ## Requirements
-- [*] The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE 
+- [x] The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE 
 command. 
-- [*] The application should discard all commands in the sequence until a valid PLACE command has been executed.
+- [x] The application should discard all commands in the sequence until a valid PLACE command has been executed.
 - [ ] A robot that is not on the table can choose the ignore any command other than PLACE
 - [ ] The robot must respond to MOVE, LEFT, RIGHT and REPORT commands.
 - [ ] Input can be from a file, or from standard input, as the developer chooses.
@@ -24,11 +24,11 @@ command.
 * Any move that would cause the robot to fall must be ignored.
 
 ### COMMANDS
-- [*] PLACE X,Y,F
+- [x] PLACE X,Y,F
 - [ ] MOVE
 - [ ] LEFT
 - [ ] RIGHT
-- [*] REPORT
+- [x] REPORT
 
 #### PLACE 
 Will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST. 

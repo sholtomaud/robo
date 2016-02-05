@@ -20,7 +20,7 @@ function commandHandler(cmd, callback){
     
     if ( command == 'report' ) {
         // commands.report()
-        callback(null,state);
+        callback(null,JSON.stringify(state));
     }
 
     kgo
@@ -40,31 +40,41 @@ function commandHandler(cmd, callback){
                  done(true);
             } 
         } )
-        ('validOptions',['place'], function(place, done){
+        ('validPlace',['place'], function(place, done){
             if ( command == 'place'){
                 commands.validateOptions(options,function(error, message){
                     if (error) {
                         state.placed = false;
-                        done(true, message);
+                        callback(error, message);
                     }
                     else{
                         state.placed = true;
-                        done(null,'Valid placing, Good!');    
+                        state.position['x'] = options[0];
+                        state.position['y'] = options[1];
+                        state.direction = options[2];
+                        callback(null, 'Valid placing, Good!')   
                     }
                 })    
             }
-            done(null);
-            
         })
-        ('command',['!validOptions'], function(done){
-            
+        ('command',['!validPlace'], function(done){
+            commands[command](options,function(error, message){
+                if (error) {
+                    callback(error, message);
+                }
+                else{
+                    callback(null,'ok')   
+                }
+            }) 
+            // done(null);
         })
         (['*place'], function(error){
             var message = '\nPlease place robo within table surface dimensions\n' +  objToString(config.tableDimensions);
             callback(errors.notPlaced, message) 
         })
-        (['*validOptions'], function(error, message){
-            callback(errors.invalidOptions, message) 
+        (['*validPlace'], function(error, message){
+            
+            callback(errors.invalidOptions, error) 
         })
         
         

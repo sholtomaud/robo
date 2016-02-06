@@ -1,8 +1,8 @@
 module.exports = {
     position: {
-        x: 0,
-        y: 0
+        x: null,
+        y: null
     },
-    direction: false,
+    dirction: false,
     placed: false
 }

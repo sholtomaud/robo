@@ -1,15 +1,4 @@
-var ctx = require('axel'),
-    spacing = ctx.rows / 6;
-
 module.exports = {
-    logicFrameRate: 100,
-    renderFrameRate: 50,
-    tableWidth: ctx.cols,
-    tableHeight: ctx.rows,
-    margin: 5,
-    width: 1,
-    height: 1,
-    maxPos: ctx.rows / 2 - 2,
     tableDimensions : {
             "sw": { "x":0, "y":0 },
             "nw": { "x":0, "y":5 },
@@ -23,10 +12,39 @@ module.exports = {
             "se": { "x":"<=", "y":">=" }
     },
     validDirections: {
-        "north": 1,
-        "south" :1,
-        "east" :1,
-        "west" : 1
+        "north": {  
+            "y" : 1, 
+            "x" : 0
+        },
+        "south" :{  
+            "x" : 0, 
+            "y" : -1 
+        },
+        "east" : {  
+            "x" : 1,
+            "y" : 0
+        },
+        "west" : {  
+            "y" : 0,
+            "x" : -1
+        }
     },
-    move : 1
+    validTurn:{
+         "north": {  
+            "left" : "west", 
+            "right" : "east"
+        },
+        "south" :{  
+            "left" : "east", 
+            "right" : "west"
+        },
+        "east" : {  
+            "left" : "north", 
+            "right" : "south"
+        },
+        "west" : {  
+            "left" : "south", 
+            "right" : "north"
+        }
+    }
 }

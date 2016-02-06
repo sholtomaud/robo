@@ -3,11 +3,7 @@
 Robo repo for lookaheads
 
 ## Mission
-Create an application that can read in commands from cli
-
-### POSITION
-
-The origin (0,0) can be considered to be the SOUTH WEST most corner
+Create a CLI application that can read in commands
 
 ## Requirements
 - [x] The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE 
@@ -20,8 +16,13 @@ command.
 - [ ] Provide source files & test source files
 
 ## Constraints
-* The toy robot must not fall off the table during movement. This also includes the initial placement of the toy robot. 
+* The toy robot must not fall off the table during movement. 
+* This also includes the initial placement of the toy robot. 
 * Any move that would cause the robot to fall must be ignored.
+
+### POSITION
+
+The origin (0,0) can be considered to be the SOUTH WEST most corner
 
 ### COMMANDS
 - [x] PLACE X,Y,F

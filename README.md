@@ -9,9 +9,9 @@ Create a CLI application that can read in commands
 - [x] The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE 
 command. 
 - [x] The application should discard all commands in the sequence until a valid PLACE command has been executed.
-- [ ] A robot that is not on the table can choose the ignore any command other than PLACE
-- [ ] The robot must respond to MOVE, LEFT, RIGHT and REPORT commands.
-- [ ] Input can be from a file, or from standard input, as the developer chooses.
+- [x] A robot that is not on the table can choose the ignore any command other than PLACE
+- [x] The robot must respond to MOVE, LEFT, RIGHT and REPORT commands.
+- [x] Input can be from a file, or from standard input, as the developer chooses - STDIN.
 - [ ] Provide test data to exercise the application.
 - [ ] Provide source files & test source files
 
@@ -26,9 +26,9 @@ The origin (0,0) can be considered to be the SOUTH WEST most corner
 
 ### COMMANDS
 - [x] PLACE X,Y,F
-- [ ] MOVE
-- [ ] LEFT
-- [ ] RIGHT
+- [x] MOVE
+- [x] LEFT
+- [x] RIGHT
 - [x] REPORT
 
 #### PLACE 

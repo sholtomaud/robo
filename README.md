@@ -2,6 +2,8 @@
 
 Robo repo for lookaheads
 
+[![Build Status](https://travis-ci.org/shotlom/robo.svg?branch=master)](https://travis-ci.org/shotlom/robo)
+
 ## Mission
 Create a CLI application that can read in commands
 

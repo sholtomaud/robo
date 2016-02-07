@@ -29,7 +29,7 @@ command.
 - [x] A robot that is not on the table can choose the ignore any command other than PLACE
 - [x] The robot must respond to MOVE, LEFT, RIGHT and REPORT commands.
 - [x] Input can be from a file, or from standard input, as the developer chooses - STDIN.
-- [ ] Provide tests
+- [x] Provide tests
 - [x] Provide test data to exercise the application.
 - [x] Provide source files & test source files
 

@@ -14,5 +14,7 @@
     "eastStatePlaced" : { "position": { "x": 5, "y": 5 }, "direction": "east", "placed": true },
     "validOptions" : [1,1,"north"],
     "invalidOptions" : [1,1],
+    "invalidPosition" : [-10,8,"north"],
+    "invalidFacing" : [1,1,"asdf"],
     "place ": {}
 }

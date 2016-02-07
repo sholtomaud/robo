@@ -4,7 +4,7 @@ var config = require('^config'),
     debug = require('debug')('robo:move');
 
 module.exports = function (currentState, options, callback){
-    var newState = currentState,
+    var newState = Object.create(currentState),
         newPosition = {};
         newPosition.x = new Number (currentState.position.x),
         newPosition.y = new Number (currentState.position.y);

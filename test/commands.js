@@ -1,7 +1,6 @@
 require('rooty')('./');
 
 var test = require('tape'),
-    validator = require('^validator'),
     errors = require('^errors'),
     commands = require('^commands'),
     config = require('^config'),
@@ -29,60 +28,69 @@ test('left', function(t){
         t.equal(err, null);
         t.equal(newState.direction, 'north');
     });
-
 });
     
 test('right', function(t){
     t.plan(8);
 
-    commands.left( testData.northStatePlaced, testData.validOptions, function(err, newState, msg ){
-        t.equal(err, null);
-        t.equal(newState.direction, 'south');
-    });
-    
-    commands.left( testData.westStatePlaced, testData.validOptions, function(err, newState, msg ){
+    commands.right( testData.northStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'east');
     });
     
-    commands.left( testData.southStatePlaced, testData.validOptions, function(err, newState, msg ){
+    commands.right( testData.westStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'north');
     });
     
-    commands.left( testData.eastStatePlaced, testData.validOptions, function(err, newState, msg ){
+    commands.right( testData.southStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'west');
+    });
+    
+    commands.right( testData.eastStatePlaced, testData.validOptions, function(err, newState, msg ){
+        t.equal(err, null);
+        t.equal(newState.direction, 'south');
+    });
+});
+
+test('move', function(t){
+    t.plan(4);
+    
+    commands.move( testData.northStatePlaced, testData.validOptions, function(err, newPosition, msg ){
+            t.equal(err.error, errors.outOfBounds);
+    });
+    commands.move( testData.eastStatePlaced, testData.validOptions, function(err, newPosition, msg ){
+            t.equal(err.error, errors.outOfBounds);
+    });
+    commands.move( testData.southStatePlaced, testData.validOptions, function(err, newPosition, msg ){
+            t.equal(err.error, errors.outOfBounds);
+    });
+    commands.move( testData.westStatePlaced, testData.validOptions, function(err, newPosition, msg ){
+            t.equal(err.error, errors.outOfBounds);
     });
 
 });
 
-// test('move', function(t){
-//     t.plan(3);
-//     // module.exports = function (currentState, options, callback){
-    
-//     commands.move('north', function(err, msg ){
-//             t.equal(err, null);
-//             t.equal(msg, 'Direction valid');
-//     });
+test('place', function(t){
+    t.plan(4);
 
-//     validator.validDirection('asdf', function(err, msg ){
-//             t.equal(err.error, errors.invalidDirection);
-//     });
-// });
+    commands.place(testData.stateNotPlaced, testData.validOptions, function(err, newPlace, msg ){
+            t.equal(err, null);
+    });
 
-// test('place', function(t){
-//     t.plan(3);
+    commands.place(testData.stateNotPlaced, testData.invalidOptions,  function(err, newPlace, msg ){
+            t.equal(err.error, errors.invalidOptions);
+    });
 
-//     commands.place('place', validOptions, function(err, msg ){
-//             t.equal(err, null);
-//             t.equal(msg, 'place');
-//     });
+    commands.place(testData.stateNotPlaced, testData.invalidPosition,  function(err, newPlace, msg ){
+            t.equal(err.error, errors.outOfBounds);
+    });
 
-//     commands.place('place', invalidOptions,  function(err, msg ){
-//             t.equal(err.error, errors.invalidOptions);
-//     });
-// });
+    commands.place(testData.stateNotPlaced, testData.invalidFacing,  function(err, newPlace, msg ){
+            t.equal(err.error, errors.invalidDirection);
+    });
+});
 
 test('report', function(t){
     t.plan(3);

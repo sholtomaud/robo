@@ -9,7 +9,7 @@ module.exports = function (currentState, options, callback){
         ( 'validateOptions', function( done){
             debug('Place validating options');
             validator.validOptions( 'place', options, function( error  ){
-                done(error,'place'); 
+                done(error, 'place'); 
             })  
         })
         ( 'validateFacing',['validateOptions'], function( command, done ){

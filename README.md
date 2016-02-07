@@ -2,13 +2,16 @@
 
 Robo repo example
 
+## Mission
+Create an application that can read in simple commands from command line, similar to logo, but robo.
+
 ## Procedure
 
 1. Clone the repo with `git clone https://github.com/shotlom/robo.git`
 2. Install dependencies `npm i`
 3. Robo is built and tested on node v0.12.7, so `nvm use 0.12.7`
 4. Run with `node index.js`
-5. Play & test
+5. Play & test using commands documented below
 
 **Testing**
 
@@ -17,9 +20,6 @@ Run `npm test`, to run tape tests.
 **Debugging**
 
 Run `npm run debug`, to run in debugging mode.
-
-## Mission
-Create a CLI application that can read in commands
 
 ## Requirements
 - [x] The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE 

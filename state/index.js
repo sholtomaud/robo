@@ -3,6 +3,6 @@ module.exports = {
         x: null,
         y: null
     },
-    dirction: false,
+    direction: false,
     placed: false
 }

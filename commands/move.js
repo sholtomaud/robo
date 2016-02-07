@@ -1,25 +1,26 @@
 var config = require('^config'),
     kgo = require('kgo'),
-    validator = require('^validator');
+    validator = require('^validator'),
+    debug = require('debug')('robo:move');
 
 module.exports = function (currentState, options, callback){
     var newState = currentState,
-        newPositin = {};
-        newPositin.x = new Number (currentState.position.x),
-        newPositin.y = new Number (currentState.position.y);
+        newPosition = {};
+        newPosition.x = new Number (currentState.position.x),
+        newPosition.y = new Number (currentState.position.y);
     
     kgo
         ('move', function( done ){
-            newPositin.x += new Number(config.validDirections[currentState.direction].x);
-            newPositin.y += new Number(config.validDirections[currentState.direction].y);
-            done(null,newPositin);
+            newPosition.x += new Number(config.validDirections[currentState.direction].x);
+            newPosition.y += new Number(config.validDirections[currentState.direction].y);
+            done(null,newPosition);
         })    
         ('validatePosition',['move'], function( newPosition, done ){
             validator.validPosition( newPosition.x, newPosition.y, function(error, msg ){
-                done(error, newPosition);
+                done(error, msg);
             })
         })
-        ('updatePosition',['validatePosition'], function( newPosition ){
+        ('updatePosition',['!validatePosition'], function(){
             var msg = 'Position now: ' + JSON.stringify( newPosition);             
             newState.position = newPosition;
             callback(null, newState, msg);

@@ -1,13 +1,24 @@
 var config = require('^config'),
     tableDimensions = config.tableDimensions,
     tableEval = config.tableEval,
+    debug = require('debug')('robo:validPosition'),
     errors = require('^errors');
-
+    
 module.exports = function (x,y, callback){
     var err = {};
     err.error = errors.outOfBounds;
     err.msg = validate(x,y);
-    ( err.msg )? callback(err ) : callback(null, 'Position valid');
+
+    debug('Validating position for x: ',x,', y:',y);
+
+    if( err.msg ){ 
+        debug( errors.invalidPosition );
+        callback( err, errors.invalidPosition );
+    } 
+    else {
+        debug( errors.validPosition ); 
+        callback(null, errors.validPosition);
+    }
 }
 
 function validate(x,y){

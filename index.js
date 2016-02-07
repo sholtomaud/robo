@@ -7,7 +7,8 @@ var colors = require('colors'),
     commands = require('^commands'),
     errors = require('^errors'),
     state = require('^state'),
-    validator = require('^validator');
+    validator = require('^validator'),
+    debug = require('debug')('robo:index');
     
 const readline = require('readline');
 const rl = readline.createInterface(process.stdin, process.stdout, setup.completer);
@@ -26,35 +27,40 @@ rl.on('line', function (cmd) {
     
     kgo
         ('validateCommand',function(done){
+            debug('Validating command', command);
             validator.validCommand( command, commands, function(error, cmd){
                 done(error, cmd);
             })
         })
-        ('validatePlaced',['validateCommand'],function(command, done){
+        ('verifyPlaced',['validateCommand'],function(command, done){
+            debug('Verifying robo is placed');
             validator.placed( command, state, function(error, cmd){
                 done(error, cmd);
             })
         })
-        ('commander',['validatePlaced'], function(command, done){
+        ('commander',['verifyPlaced'], function(command, done){
+            debug('Running command ', command);
             commands[command](state, options, function(error, stateChange, msg){
                 if ( stateChange ) state = stateChange;
                 done(error, msg);
             }) 
         })
         ('fin',['commander'], function(msg){
+            debug('No errors printing msg', msg);
             console.log(msg.cyan);
             rl.prompt();
             return;    
         })
         (['*'],function(err){
-            console.log(err.error.underline.red,err.msg);
+            debug('Error: ', err.error);
+            console.error(err.error.underline.red,err.msg);
             rl.prompt();
             return;
         })    
 });
 
 rl.on('close', function() {
-  console.log('power down');
+  console.log('power down'.blue);
   process.exit(0);
 });
 

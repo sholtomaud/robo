@@ -1,4 +1,5 @@
-var config = require('^config');
+var config = require('^config'),
+    debug = require('debug')('robo:left');
             
 module.exports = function (currentState, options, callback){
     var newState = currentState;

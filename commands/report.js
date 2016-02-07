@@ -1,3 +1,5 @@
+var debug = require('debug')('robo:report');
+
 module.exports = function (state, options, callback){
     var str = '';
     for (var p in state) {

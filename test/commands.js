@@ -5,42 +5,27 @@ var test = require('tape'),
     errors = require('^errors'),
     commands = require('^commands'),
     config = require('^config'),
-    stateNotPlaced = { 
-        position: {
-            x: null,
-            y: null
-        },
-        direction: false, 
-        placed: false 
-    },
-    statePlaced = { position: { x: 1, y: 2 }, direction: 'north', placed: true },
-    northStatePlaced = { position: { x: 5, y: 5 }, direction: 'north', placed: true },
-    westStatePlaced = { position: { x: 0, y: 0 }, direction: 'west', placed: true },
-    southStatePlaced = { position: { x: 0, y: 0 }, direction: 'south', placed: true },
-    eastStatePlaced = { position: { x: 5, y: 5 }, direction: 'east', placed: true },
-    validOptions = [1,1,'north'],
-    invalidOptions = [1,1],
-    place = {};
+    testData = require('./testData.json');
 
 test('left', function(t){
     t.plan(8);
 
-    commands.left( northStatePlaced, validOptions, function(err, newState, msg ){
+    commands.left( testData.northStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'west');
     });
     
-    commands.left( westStatePlaced, validOptions, function(err, newState, msg ){
+    commands.left( testData.westStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'south');
     });
     
-    commands.left( southStatePlaced, validOptions, function(err, newState, msg ){
+    commands.left( testData.southStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'east');
     });
     
-    commands.left( eastStatePlaced, validOptions, function(err, newState, msg ){
+    commands.left( testData.eastStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'north');
     });
@@ -50,22 +35,22 @@ test('left', function(t){
 test('right', function(t){
     t.plan(8);
 
-    commands.left( northStatePlaced, validOptions, function(err, newState, msg ){
+    commands.left( testData.northStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'south');
     });
     
-    commands.left( westStatePlaced, validOptions, function(err, newState, msg ){
+    commands.left( testData.westStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'east');
     });
     
-    commands.left( southStatePlaced, validOptions, function(err, newState, msg ){
+    commands.left( testData.southStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'north');
     });
     
-    commands.left( eastStatePlaced, validOptions, function(err, newState, msg ){
+    commands.left( testData.eastStatePlaced, testData.validOptions, function(err, newState, msg ){
         t.equal(err, null);
         t.equal(newState.direction, 'west');
     });
@@ -103,15 +88,15 @@ test('report', function(t){
     t.plan(3);
 
     var str = '';
-    for (var p in statePlaced) {
-        if (statePlaced.hasOwnProperty(p)) {
-            str += p + ': ' + JSON.stringify(statePlaced[p]) + '\n';
+    for (var p in testData.statePlaced) {
+        if (testData.statePlaced.hasOwnProperty(p)) {
+            str += p + ': ' + JSON.stringify(testData.statePlaced[p]) + '\n';
         }
     }
 
-    commands.report( statePlaced, validOptions, function(err, state, msg ){
+    commands.report( testData.statePlaced, testData.validOptions, function(err, state, msg ){
             t.equal(err, null);
-            t.deepEqual(state, statePlaced );
+            t.deepEqual(state, testData.statePlaced );
             t.deepEqual(msg, str );
     });
 });

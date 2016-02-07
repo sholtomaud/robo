@@ -5,13 +5,14 @@ Robo repo example
 ## Mission
 Create an application that can read in simple commands from command line, similar to logo, but robo.
 
-## Procedure
+## Install Procedure
+
+You need Node.js & npm. Robo is built and tested on node v0.12.7, so `nvm use 0.12.7` 
 
 1. Clone the repo with `git clone https://github.com/shotlom/robo.git`
 2. Install dependencies `npm i`
-3. Robo is built and tested on node v0.12.7, so `nvm use 0.12.7`
-4. Run with `node index.js`
-5. Play & test using commands documented below
+3. Run with `node index.js`
+4. Play & test using commands documented below
 
 **Testing**
 

@@ -1,6 +1,22 @@
 # robo [![Build Status](https://travis-ci.org/shotlom/robo.svg?branch=master)](https://travis-ci.org/shotlom/robo)
 
-Robo repo for lookaheads 
+Robo repo example
+
+## Procedure
+
+1. Clone the repo with `git clone https://github.com/shotlom/robo.git`
+2. Install dependencies `npm i`
+3. Robo is built and tested on node v0.12.7, so `nvm use 0.12.7`
+4. Run with `node index.js`
+5. Play & test
+
+**Testing**
+
+Run `npm test`, to run tape tests.
+
+**Debugging**
+
+Run `npm run debug`, to run in debugging mode.
 
 ## Mission
 Create a CLI application that can read in commands
@@ -44,6 +60,3 @@ Will rotate the robot 90 degrees in the specified direction without changing the
 #### REPORT 
 Will announce the X,Y and F of the robot. This can be in any form, but standard output is sufficient.
 
-# Debugging
-
-Run `npm run debug`, to run in debugging mode.

@@ -43,3 +43,7 @@ Will rotate the robot 90 degrees in the specified direction without changing the
 
 #### REPORT 
 Will announce the X,Y and F of the robot. This can be in any form, but standard output is sufficient.
+
+# Debugging
+
+Run `npm run debug`, to run in debugging mode.

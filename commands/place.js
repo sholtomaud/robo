@@ -36,7 +36,7 @@ module.exports = function (currentState, options, callback){
             callback(null, newState, msg);
         })        
         (['*'], function(err){
-            debug('Error: ', err.error);
+            debug('Error: ' + err.error);
             callback(err) ;
         })
 }

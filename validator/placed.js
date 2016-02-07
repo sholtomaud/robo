@@ -10,15 +10,15 @@ module.exports = function (cmd, state, callback) {
     err.msg =  '\nPlease place robo within table surface dimensions\n' +  objToString( config.tableDimensions );
     
     if ( cmd == 'place' || cmd == 'report' ) {  
-        debug(cmd, ' not require robo to be placed');
+        debug(cmd + ' does not require robo to be placed');
         callback(null, cmd); 
     }
     else if ( ! state.placed ){ 
-        debug('Error: ', err.error);
+        debug('Error: ' + err.error);
         callback(err, cmd); 
     }
     else{
-        debug(cmd, ' all good');
+        debug(cmd + ' all good');
         callback(null, cmd);    
     } 
 }
@@ -26,7 +26,6 @@ module.exports = function (cmd, state, callback) {
 function objToString (obj) {
   var str = '';
     for (var p in obj) {
-        debug('Object to string', p);
         if (obj.hasOwnProperty(p)) {
             str += p + ': ' + JSON.stringify(obj[p]) + '\n';
         }

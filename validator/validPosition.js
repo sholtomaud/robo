@@ -9,7 +9,7 @@ module.exports = function (x,y, callback){
     err.error = errors.outOfBounds;
     err.msg = validate(x,y);
 
-    debug('Validating position for x: ',x,', y:',y);
+    debug('Validating position for x: ' + x +', y:' + y);
 
     if( err.msg ){ 
         debug( errors.invalidPosition );

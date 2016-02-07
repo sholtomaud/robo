@@ -6,7 +6,7 @@ module.exports = function (cmd, commands, callback) {
     err.error =errors.invalidCommand;
     err.msg = validCommands(commands);
     
-    debug('Validating command', cmd);
+    debug('Validating command' + cmd);
     if ( !( cmd in commands ) ) {
         debug('Command not valid');
         callback( err )
@@ -21,7 +21,7 @@ function validCommands (commands) {
     var str = '';
 
     for (var c in commands) {
-        debug('Assembling valid commands', c);
+        debug('Assembling valid commands: ' + c);
         if (commands.hasOwnProperty(c)) { str += '\n' + c  ; }
     }
     return str;

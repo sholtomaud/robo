@@ -7,7 +7,7 @@ module.exports = function (direction, callback){
     err.error =errors.invalidDirection;
     err.msg = '\nPlease choose from: ' +  Object.keys(config.validDirections).join(', '); 
     
-    debug('Validation direction: ', direction);
+    debug('Validation direction: ' + direction);
 
     if ( ! ( direction in config.validDirections ) ) {
         debug('Invalid direction');

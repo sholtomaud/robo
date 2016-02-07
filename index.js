@@ -27,7 +27,7 @@ rl.on('line', function (cmd) {
     
     kgo
         ('validateCommand',function(done){
-            debug('Validating command', command);
+            debug('Validating command' + command);
             validator.validCommand( command, commands, function(error, cmd){
                 done(error, cmd);
             })
@@ -39,20 +39,20 @@ rl.on('line', function (cmd) {
             })
         })
         ('commander',['verifyPlaced'], function(command, done){
-            debug('Running command ', command);
+            debug('Running command ' + command);
             commands[command](state, options, function(error, stateChange, msg){
                 if ( stateChange ) state = stateChange;
                 done(error, msg);
             }) 
         })
         ('fin',['commander'], function(msg){
-            debug('No errors printing msg', msg);
+            debug('No errors printing msg' + msg);
             console.log(msg.cyan);
             rl.prompt();
             return;    
         })
         (['*'],function(err){
-            debug('Error: ', err.error);
+            debug('Error: ' + err.error);
             console.error(err.error.underline.red,err.msg);
             rl.prompt();
             return;

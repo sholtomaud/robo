@@ -4,7 +4,8 @@
   "description": "Robo-logo Simulator",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/*.js | tap-spec"
+    "test": "tape test/*.js | tap-spec",
+    "debug": "DEBUG=* node index.js"
   },
   "author": "",
   "license": "ISC",

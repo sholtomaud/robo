@@ -1,8 +1,6 @@
-# robo
+# robo [![Build Status](https://travis-ci.org/shotlom/robo.svg?branch=master)](https://travis-ci.org/shotlom/robo)
 
-Robo repo for lookaheads
-
-[![Build Status](https://travis-ci.org/shotlom/robo.svg?branch=master)](https://travis-ci.org/shotlom/robo)
+Robo repo for lookaheads 
 
 ## Mission
 Create a CLI application that can read in commands
@@ -14,8 +12,9 @@ command.
 - [x] A robot that is not on the table can choose the ignore any command other than PLACE
 - [x] The robot must respond to MOVE, LEFT, RIGHT and REPORT commands.
 - [x] Input can be from a file, or from standard input, as the developer chooses - STDIN.
-- [ ] Provide test data to exercise the application.
-- [ ] Provide source files & test source files
+- [ ] Provide tests
+- [x] Provide test data to exercise the application.
+- [x] Provide source files & test source files
 
 ## Constraints
 * The toy robot must not fall off the table during movement. 

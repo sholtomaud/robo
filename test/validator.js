@@ -4,39 +4,21 @@ var test = require('tape'),
     validator = require('^validator'),
     errors = require('^errors'),
     commands = require('^commands'),
-    stateNotPlaced = { 
-        position: {
-            x: null,
-            y: null
-        },
-        direction: false, 
-        placed: false 
-    },
-    statePlaced = { 
-        position: {
-            x: 1,
-            y: 2
-        },
-        direction: 'north', 
-        placed: true 
-    },
-    validOptions = [1,1,'north'],
-    invalidOptions = [1,1],
-    place = {};
+    testData = require('./testData.json');;
 
 test('placed', function(t){
     t.plan(5);
 
-    validator.placed('left', stateNotPlaced, function(err, msg ){
+    validator.placed('left', testData.stateNotPlaced, function(err, msg ){
             t.equal(err.error, errors.notPlaced )
     });
 
-    validator.placed('report', stateNotPlaced, function(err, msg ){
+    validator.placed('report', testData.stateNotPlaced, function(err, msg ){
             t.equal(err, null);
             t.equal(msg, 'report');
     });    
 
-    validator.placed('right', statePlaced, function(err, msg ){
+    validator.placed('right', testData.statePlaced, function(err, msg ){
             t.equal(err, null);
             t.equal(msg, 'right');
     });
@@ -71,12 +53,12 @@ test('validDirection', function(t){
 test('validOptions', function(t){
     t.plan(3);
 
-    validator.validOptions('place', validOptions, function(err, msg ){
+    validator.validOptions('place', testData.validOptions, function(err, msg ){
             t.equal(err, null);
             t.equal(msg, 'place');
     });
 
-    validator.validOptions('place', invalidOptions,  function(err, msg ){
+    validator.validOptions('place', testData.invalidOptions,  function(err, msg ){
             t.equal(err.error, errors.invalidOptions);
     });
 });

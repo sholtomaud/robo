@@ -7,7 +7,12 @@ Create an application that can read in simple commands from command line, simila
 
 ## Install Procedure
 
-You need Node.js & npm. Robo is built and tested on node v0.12.7, so `nvm use 0.12.7` 
+You need *node.js* & *npm* as a minimum. *nvm* would be a good addition. Robo is built and tested on the following node versions:
+
+* v0.12.7
+* v4.4.7
+
+So to be sure of getting a working version, use node version manager *nvm* and use the appropriate version, for example: `nvm use 4.4.7`
 
 1. Clone the repo with `git clone https://github.com/shotlom/robo.git`
 2. Install dependencies `npm i`
